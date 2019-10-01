@@ -38,8 +38,9 @@ def test_output():
 
 if __name__ == "__main__":
     # このスクリプトから呼び出されるモジュール全体のログ設定を行う
+    funcName = sys._getframe().f_code.co_name
     basicConfig(
-        format='[%(asctime)s] %(name)s %(levelname)s: %(message)s',
+        format='[%(asctime)s] %(name)s %(levelname)s, %(funcName)s: %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
 
@@ -53,14 +54,16 @@ if __name__ == "__main__":
     test_output()
 
 # Ex. execute and output
-# mocha@hoto:~/Github/python_debug_test$ python3 ./test_logger.py 
-# [2019-10-01 12:13:54] __main__ CRITICAL: critical
-# [2019-10-01 12:13:54] __main__ ERROR: error
-# [2019-10-01 12:13:54] __main__ WARNING: warning
-# [2019-10-01 12:13:54] __main__ INFO: info
-# [2019-10-01 12:13:54] __main__ DEBUG: hello: <module>
-# [2019-10-01 12:13:54] __main__ CRITICAL: critical: test_output
-# [2019-10-01 12:13:54] __main__ ERROR: error: test_output
-# [2019-10-01 12:13:54] __main__ WARNING: warning: test_output
-# [2019-10-01 12:13:54] __main__ INFO: info: test_output
-# [2019-10-01 12:13:54] __main__ DEBUG: hello: test_output
+"""
+mocha@hoto:~/Github/python_debug_test$ python3 ./test_logger.py 
+[2019-10-01 12:38:32] __main__ CRITICAL, <module>: critical
+[2019-10-01 12:38:32] __main__ ERROR, <module>: error
+[2019-10-01 12:38:32] __main__ WARNING, <module>: warning
+[2019-10-01 12:38:32] __main__ INFO, <module>: info
+[2019-10-01 12:38:32] __main__ DEBUG, <module>: hello: <module>
+[2019-10-01 12:38:32] __main__ CRITICAL, test_output: critical: test_output
+[2019-10-01 12:38:32] __main__ ERROR, test_output: error: test_output
+[2019-10-01 12:38:32] __main__ WARNING, test_output: warning: test_output
+[2019-10-01 12:38:32] __main__ INFO, test_output: info: test_output
+[2019-10-01 12:38:32] __main__ DEBUG, test_output: hello: test_output
+"""
