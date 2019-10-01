@@ -12,6 +12,10 @@ import sys
 
 # このスクリプト本体のロガーを取得してログレベルを設定する
 logger = getLogger(__name__)
+#logger.setLevel(CRITICAL)
+#logger.setLevel(ERROR)
+#logger.setLevel(WARNING)
+#logger.setLevel(INFO)
 logger.setLevel(DEBUG)
 
 # これはメインのファイルにのみ書く
